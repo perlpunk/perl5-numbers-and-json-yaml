@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Perl Numbers in JSON and YAML</title>
+<style type="text/css">
+body {
+    font-family: Verdana, Arial;
+}
+table.numbers {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 4px 1px grey;
+    margin-left: 3px;
+    margin-right: 3px;
+    max-height: 98%;
+}
+table.numbers tr th {
+    background-color: #d0d0d0;
+}
+table.numbers tr th, table.numbers tr td {
+    border: 1px solid #999;
+    padding: 1px 2px 1px 2px;
+    vertical-align: bottom;
+    text-align: right;
+    font-family: monospace;
+}
+td.index {
+    background-color: #d0d0d0;
+}
+td.flagx {
+    background-color: #d8d844;
+}
+td.code {
+    white-space: pre;
+    background-color: #ff99ff;
+    text-align: left !important;
+}
+td.json {
+    background-color: #bbbbe8;
+}
+td.yaml {
+    background-color: #d8bbbb;
+}
+</style>
+</head>
+<body>
+<table class="numbers">
+<tr>
+[%loop header %]
+<th>[%= _ %]</th>
+[%/loop header %]
+</tr>
+[%loop rows %]
+<tr>
+[%loop _ %]
+<td class="[%= type %]">[%= value %]</td>
+[%/loop _ %]
+</tr>
+[%/loop rows %]
+</table>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<html>
+<head>
+<title>Perl Numbers in JSON and YAML</title>
+<style type="text/css">
+body {
+    font-family: Verdana, Arial;
+}
+table.numbers {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 4px 1px grey;
+    margin-left: 3px;
+    margin-right: 3px;
+    max-height: 98%;
+}
+table.numbers tr th {
+    background-color: #d0d0d0;
+}
+table.numbers tr th, table.numbers tr td {
+    border: 1px solid #999;
+    padding: 1px 2px 1px 2px;
+    vertical-align: bottom;
+    text-align: right;
+    font-family: monospace;
+}
+td.index {
+    background-color: #d0d0d0;
+}
+td.flagx {
+    background-color: #d8d844;
+}
+td.code {
+    white-space: pre;
+    background-color: #ff99ff;
+    text-align: left !important;
+}
+td.json {
+    background-color: #bbbbe8;
+}
+td.yaml {
+    background-color: #d8bbbb;
+}
+</style>
+</head>
+<body>
+<table class="numbers">
+<tr>
+
+<th></th>
+
+<th></th>
+
+<th>INT</th>
+
+<th>FLOAT</th>
+
+<th>STRING</th>
+
+<th>JSON::PP</th>
+
+<th>JSON::XS</th>
+
+<th>Cpanel::JSON::XS</th>
+
+<th>JSON::Tiny</th>
+
+<th>Mojo::JSON</th>
+
+<th>YAML</th>
+
+<th>YAML::XS</th>
+
+<th>YAML::Syck</th>
+
+<th>YAML::PP</th>
+
+</tr>
+
+<tr>
+
+<td class="version"></td>
+
+<td class="version"></td>
+
+<td class="version"></td>
+
+<td class="version"></td>
+
+<td class="version"></td>
+
+<td class="version">2.97001</td>
+
+<td class="version">3.04</td>
+
+<td class="version">4.02</td>
+
+<td class="version">0.58</td>
+
+<td class="version">7.75</td>
+
+<td class="version">1.26</td>
+
+<td class="version">0.72</td>
+
+<td class="version">1.30</td>
+
+<td class="version">0.007</td>
+
+</tr>
+
+<tr>
+
+<td class="index">1</td>
+
+<td class="code">$x = 10</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="json">10</td>
+
+<td class="json">10</td>
+
+<td class="json">10</td>
+
+<td class="json">10</td>
+
+<td class="json">10</td>
+
+<td class="yaml">10
+</td>
+
+<td class="yaml">10
+</td>
+
+<td class="yaml">10
+</td>
+
+<td class="yaml">10
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">2</td>
+
+<td class="code">$x = 11;
+$x .= "";
+$x
+</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">"11"</td>
+
+<td class="json">"11"</td>
+
+<td class="json">"11"</td>
+
+<td class="json">"11"</td>
+
+<td class="json">"11"</td>
+
+<td class="yaml">11
+</td>
+
+<td class="yaml">'11'
+</td>
+
+<td class="yaml">11
+</td>
+
+<td class="yaml">'11'
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">3</td>
+
+<td class="code">$x = 12;
+$x .= "x";
+$x += 0;
+$x
+</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">12</td>
+
+<td class="json">12</td>
+
+<td class="json">12.0</td>
+
+<td class="json">12</td>
+
+<td class="json">12</td>
+
+<td class="yaml">12
+</td>
+
+<td class="yaml">12
+</td>
+
+<td class="yaml">'12'
+</td>
+
+<td class="yaml">12.0
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">4</td>
+
+<td class="code">$x = 13;
+$y = $x . "string";
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">13</td>
+
+<td class="json">"13"</td>
+
+<td class="json">13</td>
+
+<td class="json">13</td>
+
+<td class="json">13</td>
+
+<td class="yaml">13
+</td>
+
+<td class="yaml">13
+</td>
+
+<td class="yaml">13
+</td>
+
+<td class="yaml">13
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">5</td>
+
+<td class="code">$x = 14;
+$x .= "";
+$x += 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="json">14</td>
+
+<td class="json">14</td>
+
+<td class="json">14</td>
+
+<td class="json">14</td>
+
+<td class="json">14</td>
+
+<td class="yaml">14
+</td>
+
+<td class="yaml">14
+</td>
+
+<td class="yaml">14
+</td>
+
+<td class="yaml">14
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">6</td>
+
+<td class="code">$x = 15;
+$x .= "";
+$y = $x + 1;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">15</td>
+
+<td class="json">"15"</td>
+
+<td class="json">15</td>
+
+<td class="json">15</td>
+
+<td class="json">15</td>
+
+<td class="yaml">15
+</td>
+
+<td class="yaml">15
+</td>
+
+<td class="yaml">15
+</td>
+
+<td class="yaml">15
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">7</td>
+
+<td class="code">$x = "16"</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">"16"</td>
+
+<td class="json">"16"</td>
+
+<td class="json">"16"</td>
+
+<td class="json">"16"</td>
+
+<td class="json">"16"</td>
+
+<td class="yaml">16
+</td>
+
+<td class="yaml">'16'
+</td>
+
+<td class="yaml">16
+</td>
+
+<td class="yaml">'16'
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">8</td>
+
+<td class="code">$x = "17";
+$x += 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="json">17</td>
+
+<td class="json">17</td>
+
+<td class="json">17</td>
+
+<td class="json">17</td>
+
+<td class="json">17</td>
+
+<td class="yaml">17
+</td>
+
+<td class="yaml">17
+</td>
+
+<td class="yaml">17
+</td>
+
+<td class="yaml">17
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">9</td>
+
+<td class="code">$x = "18";
+$y = $x + 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">18</td>
+
+<td class="json">"18"</td>
+
+<td class="json">18</td>
+
+<td class="json">18</td>
+
+<td class="json">18</td>
+
+<td class="yaml">18
+</td>
+
+<td class="yaml">18
+</td>
+
+<td class="yaml">18
+</td>
+
+<td class="yaml">18
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">10</td>
+
+<td class="code">$x = 19;
+$x .= "x";
+$y = $x + 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flagx">x</td>
+
+<td class="flagx">x</td>
+
+<td class="json">"19x"</td>
+
+<td class="json">"19x"</td>
+
+<td class="json">"19x"</td>
+
+<td class="json">"19x"</td>
+
+<td class="json">"19x"</td>
+
+<td class="yaml">19x
+</td>
+
+<td class="yaml">19x
+</td>
+
+<td class="yaml">19x
+</td>
+
+<td class="yaml">19x
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">11</td>
+
+<td class="code">$x = 2e1</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">20</td>
+
+<td class="json">20</td>
+
+<td class="json">20.0</td>
+
+<td class="json">20</td>
+
+<td class="json">20</td>
+
+<td class="yaml">20
+</td>
+
+<td class="yaml">20
+</td>
+
+<td class="yaml">'20'
+</td>
+
+<td class="yaml">20.0
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">12</td>
+
+<td class="code">$x = "021";
+$y = $x + 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">"021"</td>
+
+<td class="json">"021"</td>
+
+<td class="json">"021"</td>
+
+<td class="json">"021"</td>
+
+<td class="json">"021"</td>
+
+<td class="yaml">021
+</td>
+
+<td class="yaml">021
+</td>
+
+<td class="yaml">'021'
+</td>
+
+<td class="yaml">'021'
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">13</td>
+
+<td class="code">$x = 22.1;
+$x
+</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">22.1</td>
+
+<td class="json">22.1</td>
+
+<td class="json">22.1</td>
+
+<td class="json">22.1</td>
+
+<td class="json">22.1</td>
+
+<td class="yaml">22.1
+</td>
+
+<td class="yaml">22.1
+</td>
+
+<td class="yaml">'22.1'
+</td>
+
+<td class="yaml">22.1
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">14</td>
+
+<td class="code">$x = 23.1;
+$y = $x . '';
+$x
+</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">23.1</td>
+
+<td class="json">23.1</td>
+
+<td class="json">23.1</td>
+
+<td class="json">23.1</td>
+
+<td class="json">23.1</td>
+
+<td class="yaml">23.1
+</td>
+
+<td class="yaml">23.1
+</td>
+
+<td class="yaml">'23.1'
+</td>
+
+<td class="yaml">23.1
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">15</td>
+
+<td class="code">$x = 24.1;
+$x .= '';
+$x
+</td>
+
+<td class="flag"></td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">"24.1"</td>
+
+<td class="json">"24.1"</td>
+
+<td class="json">"24.1"</td>
+
+<td class="json">"24.1"</td>
+
+<td class="json">"24.1"</td>
+
+<td class="yaml">24.1
+</td>
+
+<td class="yaml">'24.1'
+</td>
+
+<td class="yaml">'24.1'
+</td>
+
+<td class="yaml">'24.1'
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">16</td>
+
+<td class="code">$x = "25.0";
+$y = $x + 0;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flagx">x</td>
+
+<td class="flagx">x</td>
+
+<td class="json">"25.0"</td>
+
+<td class="json">"25.0"</td>
+
+<td class="json">"25.0"</td>
+
+<td class="json">"25.0"</td>
+
+<td class="json">"25.0"</td>
+
+<td class="yaml">25.0
+</td>
+
+<td class="yaml">25.0
+</td>
+
+<td class="yaml">'25.0'
+</td>
+
+<td class="yaml">'25.0'
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">17</td>
+
+<td class="code">$x = 0 + "inf"</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">Inf</td>
+
+<td class="json">inf</td>
+
+<td class="json">null</td>
+
+<td class="json">"Inf"</td>
+
+<td class="json">"Inf"</td>
+
+<td class="yaml">Inf
+</td>
+
+<td class="yaml">Inf
+</td>
+
+<td class="yaml">'Inf'
+</td>
+
+<td class="yaml">.inf
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">18</td>
+
+<td class="code">$x = 0 - "inf"</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">-Inf</td>
+
+<td class="json">-inf</td>
+
+<td class="json">null</td>
+
+<td class="json">"-Inf"</td>
+
+<td class="json">"-Inf"</td>
+
+<td class="yaml">-Inf
+</td>
+
+<td class="yaml">-Inf
+</td>
+
+<td class="yaml">'-Inf'
+</td>
+
+<td class="yaml">-.inf
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">19</td>
+
+<td class="code">$x = 0 + "nan"</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="json">NaN</td>
+
+<td class="json">-nan</td>
+
+<td class="json">null</td>
+
+<td class="json">"NaN"</td>
+
+<td class="json">"NaN"</td>
+
+<td class="yaml">NaN
+</td>
+
+<td class="yaml">NaN
+</td>
+
+<td class="yaml">'NaN'
+</td>
+
+<td class="yaml">.nan
+</td>
+
+</tr>
+
+<tr>
+
+<td class="index">20</td>
+
+<td class="code">$x = "0 but true";
+$y = 1 + $x;
+$x
+</td>
+
+<td class="flagx">x</td>
+
+<td class="flag"></td>
+
+<td class="flagx">x</td>
+
+<td class="json">"0 but true"</td>
+
+<td class="json">"0 but true"</td>
+
+<td class="json">"0 but true"</td>
+
+<td class="json">"0 but true"</td>
+
+<td class="json">"0 but true"</td>
+
+<td class="yaml">0 but true
+</td>
+
+<td class="yaml">0 but true
+</td>
+
+<td class="yaml">'0 but true'
+</td>
+
+<td class="yaml">0 but true
+</td>
+
+</tr>
+
+</table>
+
+</body>
+</html>
