@@ -3,6 +3,8 @@ use strict;
 use warnings;
 use 5.010;
 
+my $perl_version = $^V;
+
 use FindBin '$Bin';
 use Getopt::Long;
 use JSON::PP ();
@@ -103,11 +105,6 @@ EOM
     q{$x = 0 + "inf"},
     q{$x = 0 - "inf"},
     q{$x = 0 + "nan"},
-    <<'EOM',
-$x = "0 but true";
-$y = 1 + $x;
-$x
-EOM
 );
 
 for my $code (@codes) {
@@ -122,11 +119,11 @@ my @headers;
 my @versions;
 my @rows;
 if ($format eq 'html') {
-    @headers = ('', '', qw/ INT FLOAT STRING /, @json, @yaml);
+    @headers = ('', '', qw/ INT NUMBER STRING /, @json, @yaml);
     @versions = ('','','','','');
 }
 else {
-    @headers = ('', '', qw/ INT FLOAT STRING /, @json, @yaml);
+    @headers = ('', '', qw/ INT NUMBER STRING /, @json, @yaml);
     @versions = ('','','','','');
 }
 my $i = 0;
@@ -150,7 +147,7 @@ for my $i (0 .. $#data) {
 #    Devel::Peek::Dump $item;
     my $flags = B::svref_2object(\$item)->FLAGS;
     my $intflag = $flags & B::SVp_IOK ? 'x' : '';
-    my $floatflag = $flags & B::SVp_NOK ? 'x' : '';
+    my $numflag = $flags & B::SVp_NOK ? 'x' : '';
     my $stringflag = $flags & B::SVp_POK ? 'x' : '';
 
     my @row;
@@ -159,13 +156,13 @@ for my $i (0 .. $#data) {
         push @row, { type => 'index', value => $i };
         push @row, { type => 'code', value => $code };
         push @row, { type => "flag$intflag", value => $intflag };
-        push @row, { type => "flag$floatflag", value => $floatflag };
+        push @row, { type => "flag$numflag", value => $numflag };
         push @row, { type => "flag$stringflag", value => $stringflag };
     }
     else {
         push @row, $i;
         push @row, $code;
-        push @row, $intflag, $floatflag, $stringflag;
+        push @row, $intflag, $numflag, $stringflag;
     }
     for my $fw (@json) {
         my $can = $fw->can("encode_json");
@@ -219,6 +216,7 @@ elsif ($format eq 'html') {
     $htc->param(
         header => \@headers,
         rows => \@rows,
+        perl => $perl_version,
     );
     print $htc->output;
 }

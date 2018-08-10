@@ -43,6 +43,12 @@ td.yaml {
 </style>
 </head>
 <body>
+<p>
+In perl5, it's not always possible to distinguish between a number and a string.
+<br>
+The following table shows some examples, the internal flags of the variable,
+and how several JSON and YAML modules treat them.
+</p>
 <table class="numbers">
 <tr>
 
@@ -52,7 +58,7 @@ td.yaml {
 
 <th>INT</th>
 
-<th>FLOAT</th>
+<th>NUMBER</th>
 
 <th>STRING</th>
 
@@ -834,46 +840,10 @@ $x
 
 </tr>
 
-<tr>
-
-<td class="index">20</td>
-
-<td class="code">$x = "0 but true";
-$y = 1 + $x;
-$x
-</td>
-
-<td class="flagx">x</td>
-
-<td class="flag"></td>
-
-<td class="flagx">x</td>
-
-<td class="json">"0 but true"</td>
-
-<td class="json">"0 but true"</td>
-
-<td class="json">"0 but true"</td>
-
-<td class="json">"0 but true"</td>
-
-<td class="json">"0 but true"</td>
-
-<td class="yaml">0 but true
-</td>
-
-<td class="yaml">0 but true
-</td>
-
-<td class="yaml">'0 but true'
-</td>
-
-<td class="yaml">0 but true
-</td>
-
-</tr>
-
 </table>
+<hr>
+Generated with perl v5.24.1.<br>
+Source on <a href="https://github.com/perlpunk/perl5-numbers-and-json-yaml">Github</a>
 
 </body>
 </html>

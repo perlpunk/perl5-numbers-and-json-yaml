@@ -43,6 +43,12 @@ td.yaml {
 </style>
 </head>
 <body>
+<p>
+In perl5, it's not always possible to distinguish between a number and a string.
+<br>
+The following table shows some examples, the internal flags of the variable,
+and how several JSON and YAML modules treat them.
+</p>
 <table class="numbers">
 <tr>
 [%loop header %]
@@ -57,6 +63,9 @@ td.yaml {
 </tr>
 [%/loop rows %]
 </table>
+<hr>
+Generated with perl [%= perl %].<br>
+Source on <a href="https://github.com/perlpunk/perl5-numbers-and-json-yaml">Github</a>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-|||INT|FLOAT|STRING|JSON::PP|JSON::XS|Cpanel::JSON::XS|JSON::Tiny|Mojo::JSON|YAML|YAML::XS|YAML::Syck|YAML::PP|
+|||INT|NUMBER|STRING|JSON::PP|JSON::XS|Cpanel::JSON::XS|JSON::Tiny|Mojo::JSON|YAML|YAML::XS|YAML::Syck|YAML::PP|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|
 ||||||2.97001|3.04|4.02|0.58|7.75|1.26|0.72|1.30|0.007|
 |1|$x = 10|x|||10|10|10|10|10|10<br>|10<br>|10<br>|10<br>|
@@ -38,6 +38,4 @@
 |18|$x = 0 - "inf"||x||-Inf|-inf|null|"-Inf"|"-Inf"|-Inf<br>|-Inf<br>|'-Inf'<br>|-.inf<br>|
 | | | | | | | | | | | | | | |
 |19|$x = 0 + "nan"||x||NaN|-nan|null|"NaN"|"NaN"|NaN<br>|NaN<br>|'NaN'<br>|.nan<br>|
-| | | | | | | | | | | | | | |
-|20|$x = "0 but true";<br>$y = 1 + $x;<br>$x<br>|x||x|"0 but true"|"0 but true"|"0 but true"|"0 but true"|"0 but true"|0 but true<br>|0 but true<br>|'0 but true'<br>|0 but true<br>|
 | | | | | | | | | | | | | | |
