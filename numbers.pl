@@ -18,6 +18,7 @@ use YAML::Syck ();
     $YAML::Syck::ImplicitTyping = 1;
 use YAML::XS ();
 use YAML::PP ();
+use YAML::Tiny ();
 use Text::Table;
 use Devel::Peek ();
 use HTML::Template::Compiled;
@@ -113,7 +114,7 @@ for my $code (@codes) {
 
 
 my @json = qw/ JSON::PP JSON::XS Cpanel::JSON::XS JSON::Tiny Mojo::JSON /;
-my @yaml = qw/ YAML YAML::XS YAML::Syck YAML::PP /;
+my @yaml = qw/ YAML YAML::XS YAML::Syck YAML::PP YAML::Tiny /;
 
 my @headers;
 my @versions;
